@@ -1,8 +1,102 @@
-# Speech_Recognition
+# 🗣️ Accent-Agnostic Speech Transcription Model for Enhanced Accessibility
 
-## Introduction.
-In today's digital age, education has surpassed the boundaries of traditional classrooms, thanks to the proliferation of e-learning platforms. However, in the middle of this transformation, a significant challenge persists ensuring that educational content is accessible to learners of diverse backgrounds and abilities. Imagine trying to learn from an online lecture, only to be hindered by accents or dialects that make understanding difficult. This is the reality faced by many learners worldwide. Our project, driven by a passion for inclusivity and accessibility in education, aims to tackle this challenge. By developing an innovative speech transcription model, we aspire to break down barriers and empower learners from all walks of life to engage effectively with educational content. To achieve our goal, we start by converting audio files into Mel-frequency cepstral coefficients (MFCCs), a technique widely used in audio signal processing. MFCCs allow us to extract essential features from the sound spectrum, enabling our model to understand spoken language more effectively. Additionally, we perform a train-test split to ensure that our model is trained on a diverse dataset while also being evaluated on unseen data.
+This project addresses the challenge of accent variability in speech recognition, particularly within **e-learning environments**, by developing a **robust, accent-agnostic speech transcription system** using **deep learning techniques**. Leveraging MFCCs for feature extraction and comparing RNN, LSTM, and GRU architectures, the GRU-based model demonstrated superior performance, making a meaningful step toward **inclusive and accessible education** for all.
 
-We don't stop there. We rigorously evaluate our model's performance using metrics such as Loss function and accuracy between the predicted outputs and actual label, we can further decode the outputs using decode function but that part is left out due to constraint in computation resources, also these output sequences require preprocessing that can be changed to texts but now the outputs are in the form of sequences so we transformed our labels into the sequences further details will be explained below in the Notebook. These metrics allow us to assess how accurately our model transcribes speech and how well it generalizes to new data. We compare the performance of different models, including Recurrent Neural Networks (RNN), Long Short-Term Memory (LSTM), and Gated Recurrent Unit (GRU), to identify the most effective approach.
+---
 
-Ultimately, our goal is to select the model that achieves the highest accuracy. By doing so, we can pave the way for a more inclusive and accessible future in ed-tech platforms, where every learner has the opportunity to thrive. So, let's get into it!
+## 🧠 Project Overview
+
+- 🎯 **Objective**: Build a speech recognition model that performs accurately across diverse English accents to improve transcription reliability in digital learning environments.
+- 📦 **Dataset**: [Mozilla Common Voice](https://commonvoice.mozilla.org/) – multilingual dataset rich in diverse accents.
+- 🔍 **Techniques Used**:
+  - Feature Extraction: Mel-Frequency Cepstral Coefficients (MFCCs)
+  - Models: RNN, LSTM, GRU (evaluated comparatively)
+  - Frameworks: TensorFlow, Keras, NumPy, Matplotlib
+
+---
+
+## 🛠️ Technologies Used
+
+| Category       | Tools/Methods                    |
+|----------------|----------------------------------|
+| Feature Extraction | MFCCs (LibROSA)              |
+| Deep Learning  | RNN, LSTM, GRU (Keras/TensorFlow)|
+| Data Handling  | NumPy, Pandas                   |
+| Visualization  | Matplotlib, Seaborn             |
+| Audio Conversion | FFmpeg                        |
+
+---
+
+## 📈 Performance Summary
+
+| Model | Training Accuracy | Validation Accuracy | Training Loss | Validation Loss |
+|-------|-------------------|---------------------|---------------|-----------------|
+| RNN   | 75.2%             | 72.8%               | 0.88          | 0.93            |
+| LSTM  | 81.4%             | 79.5%               | 0.65          | 0.70            |
+| **GRU**   | **83.9%**         | **82.3%**               | **0.59**          | **0.62**            |
+
+> ✅ **GRU outperformed** all other models in accuracy and generalization, proving most suitable for accent-agnostic transcription.
+
+---
+
+## 🔄 Methodology
+
+1. **Data Preprocessing**
+   - MP3 → WAV conversion using FFmpeg
+   - Resampling to 16kHz
+   - Feature extraction using MFCCs
+   - Data normalization for convergence
+
+2. **Model Development**
+   - Built and compared 3 models: RNN, LSTM, GRU
+   - Applied Dropout and TimeDistributed Dense layers
+   - Used Categorical Crossentropy loss with Adam optimizer
+
+3. **Evaluation Metrics**
+   - Accuracy, Training/Validation Loss
+   - Model convergence trends
+   - Practical generalization across accents
+
+---
+
+## 💡 Key Findings
+
+- GRU model provided the best trade-off between **computational efficiency** and **performance**.
+- LSTM showed solid performance but was more resource-intensive.
+- Basic RNN struggled with long-term dependencies and showed signs of overfitting.
+
+---
+
+## 🧩 Applications
+
+- 🎓 **E-learning**: Enhanced subtitle generation and real-time voice recognition for diverse learners
+- 🧏 **Accessibility**: Assistive tools for users with hearing impairments or non-native accents
+- 💼 **Voice-activated services**: Can generalize well in multilingual call centers or smart assistant platforms
+
+---
+
+## 👥 Team
+
+**Team: Titans Alliance**
+
+- [Bojanapally Santhoshini](https://github.com/Bsanthoshini1811)  
+- RamyaSri Muthineni  
+- Ruchitha Paccha  
+
+---
+
+## 📚 References
+
+- Mozilla Common Voice Dataset  
+- Goodfellow, Bengio & Courville – Deep Learning  
+- Graves et al. – Connectionist Temporal Classification  
+- Rabiner – Hidden Markov Models in Speech Recognition  
+- FFmpeg Documentation
+
+---
+
+## 📬 Contact
+
+For questions or collaborations, feel free to reach out via GitHub or email us directly.
+---
+
